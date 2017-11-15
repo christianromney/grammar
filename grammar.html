@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Intro to Language Grammars</title>
+<meta name="author" content="(Christian Romney)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/night.css" id="theme"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/css/zenburn.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Intro to Language Grammars</h1>
+</section>
+<section>
+<section id="slide-org6687f2e">
+<h2 id="org6687f2e">Lexicon</h2>
+<div class="outline-text-2" id="text-org6687f2e">
+</div>
+</section>
+<section id="slide-org70336bd">
+<h3 id="org70336bd">Symbol - letters, digits</h3>
+</section>
+<section id="slide-org65f95b9">
+<h3 id="org65f95b9">Terminals - literal symbols not replaced by a grammar</h3>
+</section>
+<section id="slide-orgdc65fca">
+<h3 id="orgdc65fca">Non-terminals - symbols that are replaced by grammar rules</h3>
+</section>
+<section id="slide-org4acfb09">
+<h3 id="org4acfb09">Alphabet - the set of all symbols used to produce strings in the language</h3>
+</section>
+<section id="slide-orgcab53e7">
+<h3 id="orgcab53e7">String - a finite sequence of members of an Alphabet</h3>
+</section>
+<section id="slide-orgff35efd">
+<h3 id="orgff35efd">Language - a set of strings of symbols together with a set of rules</h3>
+</section>
+<section id="slide-orgfe784ae">
+<h3 id="orgfe784ae">Grammar - a set of rules for rewriting strings</h3>
+</section>
+</section>
+<section>
+<section id="slide-org3acca70">
+<h2 id="org3acca70">Example</h2>
+<div class="outline-text-2" id="text-org3acca70">
+</div>
+</section>
+<section id="slide-org3870df8">
+<h3 id="org3870df8">Binary Language</h3>
+<p>
+A look at different ways to describe this language.
+</p>
+</section>
+<section id="slide-org888fef4">
+<h3 id="org888fef4">Alphabet</h3>
+<p>
+The alphabet of the binary language includes two symbols: 0 and 1.
+</p>
+</section>
+<section id="slide-org7845188">
+<h3 id="org7845188">Set Notation</h3>
+<div>
+\begin{equation}
+A = \{0, 1\}
+\end{equation}
+
+</div>
+</section>
+<section id="slide-org91ba584">
+<h3 id="org91ba584">Production Rules Notation</h3>
+<div>
+\begin{equation}
+S \longrightarrow S\,S
+\\
+S \longrightarrow 0
+\\
+S \longrightarrow 1
+\end{equation}
+
+</div>
+</section>
+<section id="slide-org74023af">
+<h3 id="org74023af">Backus-Naur Form (BNF)</h3>
+<div>
+\begin{equation}
+BinaryNumber ::= BinaryString
+\\
+BinaryString ::= BinaryDigit\; |\; BinaryDigit\; BinaryString
+\\
+BinaryDigit ::= 0\; |\; 1
+\end{equation}
+
+</div>
+</section>
+<section id="slide-orgc9e68e7">
+<h3 id="orgc9e68e7">Kleene Star</h3>
+<p>
+Repetition zero or more times
+</p>
+</section>
+<section id="slide-org046acfc">
+<h3 id="org046acfc">Kleene Plus</h3>
+<p>
+Repetition one or more times
+</p>
+</section>
+<section id="slide-org86f3a0f">
+<h3 id="org86f3a0f">Simplified BNF</h3>
+<div>
+\begin{equation}
+BinaryNumber ::= BinaryDigit^{+}
+\\
+BinaryDigit ::= 0\; |\; 1
+\end{equation}
+
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org9127dc4">
+<h2 id="org9127dc4">Directionality</h2>
+<div class="outline-text-2" id="text-org9127dc4">
+</div>
+</section>
+<section id="slide-orgb42b44b">
+<h3 id="orgb42b44b">Grammars can be used to recognize or generate language strings</h3>
+<p>
+**
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

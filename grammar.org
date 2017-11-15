@@ -1,0 +1,54 @@
+#+TITLE: Intro to Language Grammars
+#+OPTIONS: toc:nil num:nil email:nil author:nil created:nil date:nil timestamp:nil
+#+EMAIL:
+#+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/
+#+REVEAL_THEME: night
+#+REVEAL_TRANS: concave
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_EXTRA_CSS: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/css/zenburn.css
+* Lexicon
+** Symbol - letters, digits
+** Terminals - literal symbols not replaced by a grammar
+** Non-terminals - symbols that are replaced by grammar rules
+** Alphabet - the set of all symbols used to produce strings in the language
+** String - a finite sequence of members of an Alphabet
+** Language - a set of strings of symbols together with a set of rules
+** Grammar - a set of rules for rewriting strings
+* Example
+** Binary Language
+A look at different ways to describe this language.
+** Alphabet
+The alphabet of the binary language includes two symbols: 0 and 1.
+** Set Notation
+\begin{equation}
+A = \{0, 1\}
+\end{equation}
+** Production Rules Notation
+\begin{equation}
+S \longrightarrow S\,S
+\\
+S \longrightarrow 0
+\\
+S \longrightarrow 1
+\end{equation}
+** Backus-Naur Form (BNF)
+\begin{equation}
+BinaryNumber ::= BinaryString
+\\
+BinaryString ::= BinaryDigit\; |\; BinaryDigit\; BinaryString
+\\
+BinaryDigit ::= 0\; |\; 1
+\end{equation}
+** Kleene Star
+Repetition zero or more times
+** Kleene Plus
+Repetition one or more times
+** Simplified BNF
+\begin{equation}
+BinaryNumber ::= BinaryDigit^{+}
+\\
+BinaryDigit ::= 0\; |\; 1
+\end{equation}
+* Directionality
+** Grammars can be used to recognize or generate language strings
+**
