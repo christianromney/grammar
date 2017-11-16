@@ -31,53 +31,53 @@
 <section id="sec-title-slide"><h1 class="title">Intro to Language Grammars</h1>
 </section>
 <section>
-<section id="slide-org6687f2e">
-<h2 id="org6687f2e">Lexicon</h2>
-<div class="outline-text-2" id="text-org6687f2e">
+<section id="slide-org37b20b1">
+<h2 id="org37b20b1">Lexicon</h2>
+<div class="outline-text-2" id="text-org37b20b1">
 </div>
 </section>
-<section id="slide-org70336bd">
-<h3 id="org70336bd">Symbol - letters, digits</h3>
+<section id="slide-orgbab331e">
+<h3 id="orgbab331e">Symbol - letters, digits</h3>
 </section>
-<section id="slide-org65f95b9">
-<h3 id="org65f95b9">Terminals - literal symbols not replaced by a grammar</h3>
+<section id="slide-orge734a61">
+<h3 id="orge734a61">Terminals - literal symbols not replaced by a grammar</h3>
 </section>
-<section id="slide-orgdc65fca">
-<h3 id="orgdc65fca">Non-terminals - symbols that are replaced by grammar rules</h3>
+<section id="slide-org1cc4513">
+<h3 id="org1cc4513">Non-terminals - symbols that are replaced by grammar rules</h3>
 </section>
-<section id="slide-org4acfb09">
-<h3 id="org4acfb09">Alphabet - the set of all symbols used to produce strings in the language</h3>
+<section id="slide-orgce1bec4">
+<h3 id="orgce1bec4">Alphabet - the set of all symbols used to produce strings in the language</h3>
 </section>
-<section id="slide-orgcab53e7">
-<h3 id="orgcab53e7">String - a finite sequence of members of an Alphabet</h3>
+<section id="slide-orgd1081c0">
+<h3 id="orgd1081c0">String - a finite sequence of members of an Alphabet</h3>
 </section>
-<section id="slide-orgff35efd">
-<h3 id="orgff35efd">Language - a set of strings of symbols together with a set of rules</h3>
+<section id="slide-org0348639">
+<h3 id="org0348639">Language - a set of strings of symbols together with a set of rules</h3>
 </section>
-<section id="slide-orgfe784ae">
-<h3 id="orgfe784ae">Grammar - a set of rules for rewriting strings</h3>
+<section id="slide-org95adfc1">
+<h3 id="org95adfc1">Grammar - a set of rules for rewriting strings</h3>
 </section>
 </section>
 <section>
-<section id="slide-org3acca70">
-<h2 id="org3acca70">Example</h2>
-<div class="outline-text-2" id="text-org3acca70">
+<section id="slide-org7a2aed0">
+<h2 id="org7a2aed0">Grammars by Example</h2>
+<div class="outline-text-2" id="text-org7a2aed0">
 </div>
 </section>
-<section id="slide-org3870df8">
-<h3 id="org3870df8">Binary Language</h3>
+<section id="slide-org7679c96">
+<h3 id="org7679c96">Binary Language</h3>
 <p>
 A look at different ways to describe this language.
 </p>
 </section>
-<section id="slide-org888fef4">
-<h3 id="org888fef4">Alphabet</h3>
+<section id="slide-org272db20">
+<h3 id="org272db20">Alphabet</h3>
 <p>
 The alphabet of the binary language includes two symbols: 0 and 1.
 </p>
 </section>
-<section id="slide-org7845188">
-<h3 id="org7845188">Set Notation</h3>
+<section id="slide-org78d0a94">
+<h3 id="org78d0a94">Set Notation</h3>
 <div>
 \begin{equation}
 A = \{0, 1\}
@@ -85,66 +85,162 @@ A = \{0, 1\}
 
 </div>
 </section>
-<section id="slide-org91ba584">
-<h3 id="org91ba584">Production Rules Notation</h3>
+<section id="slide-org9e923af">
+<h3 id="org9e923af">Backus-Naur Form (BNF)</h3>
 <div>
 \begin{equation}
-S \longrightarrow S\,S
+\tiny
+\lt BinaryNumber \gt\; ::= \; \lt BinaryString \gt
 \\
-S \longrightarrow 0
+\tiny
+\lt BinaryString \gt\; ::= \; \lt BinaryDigit \gt \; |\; \lt BinaryDigit \gt\; \lt BinaryString \gt
 \\
-S \longrightarrow 1
+\tiny
+\lt BinaryDigit \gt \; ::= \; 0\; |\; 1
 \end{equation}
 
 </div>
 </section>
-<section id="slide-org74023af">
-<h3 id="org74023af">Backus-Naur Form (BNF)</h3>
-<div>
-\begin{equation}
-BinaryNumber ::= BinaryString
-\\
-BinaryString ::= BinaryDigit\; |\; BinaryDigit\; BinaryString
-\\
-BinaryDigit ::= 0\; |\; 1
-\end{equation}
-
-</div>
-</section>
-<section id="slide-orgc9e68e7">
-<h3 id="orgc9e68e7">Kleene Star</h3>
+<section id="slide-orgb16836c">
+<h3 id="orgb16836c">Kleene Star</h3>
 <p>
 Repetition zero or more times
 </p>
 </section>
-<section id="slide-org046acfc">
-<h3 id="org046acfc">Kleene Plus</h3>
+<section id="slide-orgcf5149c">
+<h3 id="orgcf5149c">Kleene Plus</h3>
 <p>
 Repetition one or more times
 </p>
 </section>
-<section id="slide-org86f3a0f">
-<h3 id="org86f3a0f">Simplified BNF</h3>
+<section id="slide-org0dbbbd0">
+<h3 id="org0dbbbd0">Extended Backus-Naur Form (EBNF)</h3>
 <div>
 \begin{equation}
+\tiny
 BinaryNumber ::= BinaryDigit^{+}
 \\
+\tiny
 BinaryDigit ::= 0\; |\; 1
+\end{equation}
+
+</div>
+</section>
+<section id="slide-org4c724ae">
+<h3 id="org4c724ae">Production Rules Notation</h3>
+<div>
+\begin{equation}
+\tiny
+S \rightarrow S\,S\;\;\verb! (rule 1)!
+\\
+\tiny
+S \rightarrow 0\;\;\verb! (rule 2)!
+\\
+\tiny
+S \rightarrow 1\;\;\verb! (rule 3)!
+\end{equation}
+
+</div>
+</section>
+<section id="slide-orgb4fdf51">
+<h3 id="orgb4fdf51">Derivation</h3>
+<p>
+Begin with the start symbol \(S\), and apply rules a finite number of times
+</p>
+<div>
+\begin{equation}
+\tiny
+S\; \verb! (start)!
+\\
+\tiny
+SS\; \verb! (rule 1)!
+\\
+\tiny
+1S\; \verb! (rule 3)!
+\\
+\tiny
+1SS\; \verb! (rule 1)!
+\\
+\tiny
+10S\; \verb! (rule 2)!
+\\
+\tiny
+10SS\; \verb! (rule 1)!
+\\
+\tiny
+100S\; \verb! (rule 2)!
+\\
+\tiny
+1001\; \verb! (rule 3)!
 \end{equation}
 
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org9127dc4">
-<h2 id="org9127dc4">Directionality</h2>
-<div class="outline-text-2" id="text-org9127dc4">
+<section id="slide-org96dd2ab">
+<h2 id="org96dd2ab">Applications</h2>
+<div class="outline-text-2" id="text-org96dd2ab">
 </div>
 </section>
-<section id="slide-orgb42b44b">
-<h3 id="orgb42b44b">Grammars can be used to recognize or generate language strings</h3>
+<section id="slide-org699c124">
+<h3 id="org699c124">Language Interpretation / Compilation</h3>
+
+<div class="figure">
+<p><img src="intcomp.png" alt="intcomp.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge6ec87a">
+<h3 id="orge6ec87a">Scanners</h3>
+<div class="outline-text-3" id="text-orge6ec87a">
+</div>
+</section>
+<section id="slide-org9167cc8">
+<h4 id="org9167cc8">Finite State Automata</h4>
+<ul>
+<li>Also known as finite state machines.</li>
+<li>Can be used to recognize strings for a language.</li>
+
+</ul>
+</section>
+<section id="slide-org985f0a1">
+<h4 id="org985f0a1">Deterministic Finite Automata (DFA)</h4>
+<div class="outline-text-4" id="text-org985f0a1">
+</div>
+<ul class="org-ul">
+<li><a id="org76b5bd4"></a>Each unique input to a state has a unique transition<br /></li>
+<li><a id="org1ef7d46"></a>DFA for recognizing the string 1001<br />
+<div class="figure">
+<p><img src="dfa.png" alt="dfa.png" />
+</p>
+</div>
+</li>
+</ul>
+
+</section>
+<section id="slide-org140b094">
+<h4 id="org140b094">Non-deterministic Finite Automata (NFA)</h4>
+<div class="outline-text-4" id="text-org140b094">
+</div>
+<ul class="org-ul">
+<li><a id="org4bb65ac"></a>Each unique input to a state may have more than 1 transition<br /></li>
+<li><a id="orgeddc080"></a>Any NFA can be transformed into a DFA recognizing the same language<br /></li>
+</ul>
+</section>
+<section id="slide-org10c1a10">
+<h3 id="org10c1a10">Parsers</h3>
+<ul>
+<li>Consume a token stream</li>
+<li>Produce an abstract syntax tree (AST)</li>
+
+</ul>
+</section>
+<section id="slide-org5c44d9e">
+<h3 id="org5c44d9e">Abstract Syntax Trees</h3>
 <p>
-**
+<b>*</b>
 </p>
 </section>
 </section>

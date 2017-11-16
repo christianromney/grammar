@@ -14,7 +14,7 @@
 ** String - a finite sequence of members of an Alphabet
 ** Language - a set of strings of symbols together with a set of rules
 ** Grammar - a set of rules for rewriting strings
-* Example
+* Grammars by Example
 ** Binary Language
 A look at different ways to describe this language.
 ** Alphabet
@@ -23,32 +23,126 @@ The alphabet of the binary language includes two symbols: 0 and 1.
 \begin{equation}
 A = \{0, 1\}
 \end{equation}
-** Production Rules Notation
-\begin{equation}
-S \longrightarrow S\,S
-\\
-S \longrightarrow 0
-\\
-S \longrightarrow 1
-\end{equation}
 ** Backus-Naur Form (BNF)
 \begin{equation}
-BinaryNumber ::= BinaryString
+\tiny
+\lt BinaryNumber \gt\; ::= \; \lt BinaryString \gt
 \\
-BinaryString ::= BinaryDigit\; |\; BinaryDigit\; BinaryString
+\tiny
+\lt BinaryString \gt\; ::= \; \lt BinaryDigit \gt \; |\; \lt BinaryDigit \gt\; \lt BinaryString \gt
 \\
-BinaryDigit ::= 0\; |\; 1
+\tiny
+\lt BinaryDigit \gt \; ::= \; 0\; |\; 1
 \end{equation}
 ** Kleene Star
 Repetition zero or more times
 ** Kleene Plus
 Repetition one or more times
-** Simplified BNF
+** Extended Backus-Naur Form (EBNF)
 \begin{equation}
+\tiny
 BinaryNumber ::= BinaryDigit^{+}
 \\
+\tiny
 BinaryDigit ::= 0\; |\; 1
 \end{equation}
-* Directionality
-** Grammars can be used to recognize or generate language strings
-**
+** Production Rules Notation
+\begin{equation}
+\tiny
+S \rightarrow S\,S\;\;\verb! (rule 1)!
+\\
+\tiny
+S \rightarrow 0\;\;\verb! (rule 2)!
+\\
+\tiny
+S \rightarrow 1\;\;\verb! (rule 3)!
+\end{equation}
+** Derivation
+Begin with the start symbol \(S\), and apply rules a finite number of times
+\begin{equation}
+\tiny
+S\; \verb! (start)!
+\\
+\tiny
+SS\; \verb! (rule 1)!
+\\
+\tiny
+1S\; \verb! (rule 3)!
+\\
+\tiny
+1SS\; \verb! (rule 1)!
+\\
+\tiny
+10S\; \verb! (rule 2)!
+\\
+\tiny
+10SS\; \verb! (rule 1)!
+\\
+\tiny
+100S\; \verb! (rule 2)!
+\\
+\tiny
+1001\; \verb! (rule 3)!
+\end{equation}
+* Applications
+** Language Interpretation / Compilation
+
+#+begin_src dot :file intcomp.png :commandline dot -Kdot -Tpng
+  digraph intcomp {
+    rankdir=LR;
+    node[shape=box];
+    source[label="source text"];
+    tokens[label="token stream"];
+    ast[label="abstract syntax tree"];
+    object[label="object code"];
+    machine[label="machine code"]
+    running[label="executable code"];
+
+    source -> tokens [label="scanner"];
+    tokens -> ast [label="parser"];
+    ast -> running [label="intepreter"];
+    ast -> object [label="compiler"];
+    object -> machine [label="assembler"];
+    machine -> running [label="linker"]
+  }
+#+end_src
+** Scanners
+*** Finite State Automata
+- Also known as finite state machines.
+- Can be used to recognize strings for a language.
+*** Deterministic Finite Automata (DFA)
+**** Each unique input to a state has a unique transition
+**** DFA for recognizing the string 1001
+#+begin_src dot :file dfa.png :commandline dot -Kcirco -Tpng
+digraph fsm {
+  rankdir=LR;
+  node[shape=circle];
+  SS;
+  S1;
+  S2;
+  S3;
+  node[shape=doublecircle];
+  SA;
+  node[shape=point];
+  SI;
+
+  SI -> SS;
+  SS -> S1 [label=1];
+  S1 -> S2 [label=0];
+  S1 -> SS [label=1];
+  S2 -> S3 [label=0];
+  S2 -> SS [label=1];
+  S3 -> SS [label=0];
+  S3 -> SA [label=1];
+
+}
+
+#+end_src
+*** Non-deterministic Finite Automata (NFA)
+**** Each unique input to a state may have more than 1 transition
+**** Any NFA can be transformed into a DFA recognizing the same language
+** Parsers
+- Consume a token stream
+- Produce an abstract syntax tree (AST)
+** Abstract Syntax Trees
+***
